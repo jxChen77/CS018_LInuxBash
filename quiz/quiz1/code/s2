@@ -1,0 +1,11 @@
+day=$(date|cut -d " " -f 1)
+month=$(date|cut -d " " -f 2)
+date=$(date|cut -d " " -f 3)
+year=$(date|rev|cut -d " " -f 1 | rev)
+if [[ $day = "Tue" ]] || [[ $day = "Thu" ]]; then
+echo "Hi there"
+else if [[ $day = "Mon" ]] || [[ $day = "Wed" ]]; then
+echo "Hello world"
+fi
+fi
+echo "Today is $month/$date/$year and $day."

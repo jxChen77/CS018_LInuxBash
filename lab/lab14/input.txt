@@ -1,0 +1,5 @@
+1	Alice	80
+2	Bob	88
+4	Cindy	77
+7	Jenny	93
+8	Paul	99

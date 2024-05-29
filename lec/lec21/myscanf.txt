@@ -1,0 +1,3 @@
+Enter integer a: You entered 5
+Enter float b: You entered  6.00
+Enter double c: You entered  7.00

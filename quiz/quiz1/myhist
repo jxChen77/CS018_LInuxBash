@@ -1,0 +1,10 @@
+  122  cat h2.err
+  126  cat h2.err 
+  167  history | grep "cat" | cat > myhist
+  169  cat myhist
+  170  history | grep "cat" | tail -10 | cat > myhist
+  171  cat myhist 
+  174  cat h1.c | grep "count" | cat > h1.count
+  176  cat h1.count
+  177  history | grep "cat" | tail -11 | head -10| cat > myhist
+  178  cat myhist

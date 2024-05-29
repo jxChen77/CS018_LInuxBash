@@ -1,0 +1,5 @@
+h2.c: In function ‘main’:
+h2.c:5:9: error: ‘c’ undeclared (first use in this function)
+    5 |         c = a + b;
+      |         ^
+h2.c:5:9: note: each undeclared identifier is reported only once for each function it appears in

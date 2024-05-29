@@ -1,0 +1,9 @@
+echo -n "Enter directory under current directory : "
+dirname=$(pwd | rev | cut -d "/" -f 1 | rev)
+echo "$dirname"
+filename=$(ls -lt | head -2 | tail -1 | rev | cut -d " " -f 1 | rev )
+echo "The newest file under $dirname is $filename"
+echo "$(ls -l $filename |  rev | cut -d " " -f 2- | rev ) $dirname/$filename"
+olddest=$(ls -lt | tail -1 | rev | cut -d " " -f 1 | rev )
+rm $olddest
+echo "Deleting... $olddest"
