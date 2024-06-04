@@ -5,13 +5,6 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-//struct sigaction {
-//	void (*sa_handler)(int);
-//	void (*sa_sigaction) (int, siginfo_t*, void*);
-//	sigset_t sa_mask;
-//	int sa_flags;
-//	void 
-//}
 int child1 = 0;
 void upperOutput(){
 	for(int i = 0; i < 26; i++){
@@ -38,7 +31,8 @@ void lowerOutput(){
 
 int main(){
 	int fd[2];
-	if(pipe(fd) < 0) exit(EXIT_FAILURE);
+	if(pipe(fd) < 0)
+	       	exit(EXIT_FAILURE);
        	child1 = fork();
 	if(child1 > 0){
 		int p2 = fork();
@@ -59,7 +53,7 @@ int main(){
 		int child2;
 		char ch2[10] = {0};
 		if(read(fd[0], &child2, sizeof(int)) != 0)
-		printf("child2: %d\n", child2);
+			printf("child2: %d\n", child2);
 		kill(child2, SIGINT);
 		signal(SIGQUIT, lowerOutput);
 		while(1){
