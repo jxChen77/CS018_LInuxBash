@@ -31,8 +31,9 @@ void lowerOutput(){
 
 int main(){
 	int fd[2];
-	if(pipe(fd) < 0)
+	if(pipe(fd) < 0) {
 	       	exit(EXIT_FAILURE);
+	}
        	child1 = fork();
 	if(child1 > 0){
 		int p2 = fork();

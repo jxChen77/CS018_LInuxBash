@@ -36,7 +36,7 @@ int main(int argc, char const* argv[])
 	printf("message sent to the server.....\n\n");
 	sleep(1);
 	printf("Client reads message from the server\n");
-	while(strcmp(buf,"exit") != 0 ){
+	while(strncmp(buf,"exit", 4) != 0 ){
 		memset(buf,'\0', 1024);
 		size = read(client_fd, buf, 1024-1);
 		printf("%s\n", buf);
