@@ -17,21 +17,18 @@ void *Send_function(void* arg) {
 		printf("Server sending to Client: ");
 		fgets(buf, 200, stdin);
 		write(*fd, buf, strlen(buf));
-	}while(strncmp(buf, "exit", 4) != 0 && strlen(buf) != 4);
+	}while(strcmp(buf, "exit\n") != 0);
 	printf("Chatting ends se\n");
 }
 void *Receive_function(void* arg) {
 	int* fd = (int*) arg;
         char buf[200] = {0};
         do {
-               	if(read(*fd, buf, strlen(buf)) > 0) {
-			printf("[From Client]: %s\n", buf);
-			memset(buf, '\0', 200);
+		memset(buf, '\0', 200);
+               	if(read(*fd, buf, 200) > 0) {
+			printf("\n[From Client]: %s\n", buf);
 		}
-		else 
-			continue;
-		
-        }while(strncmp(buf, "exit", 4) != 0 && strlen(buf) != 4);
+	}while(strcmp(buf, "exit\n") != 0 );
 	printf("Chatting ends re\n");	
 }
 int main(int argc, char* argv[])
