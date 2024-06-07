@@ -16,6 +16,8 @@ void *Send_function(void* arg) {
 		write(*fd, buf, strlen(buf));
 	}while(strcmp(buf, "exit\n") != 0 );  
 	printf("Chatting ends se\n");
+	close(*fd);
+	exit(0);
 }
 void *Receive_function(void* arg) {  
 	int* fd = (int*) arg;
@@ -28,6 +30,8 @@ void *Receive_function(void* arg) {
 		}
 	}while(strcmp(buf, "exit\n") != 0);  
 	printf("Chatting ends re\n");
+	close(*fd);
+	exit(0);
 }
 
 int main(int argc, char const* argv[])
