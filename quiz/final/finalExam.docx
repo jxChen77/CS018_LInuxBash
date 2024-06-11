@@ -1,0 +1,12 @@
+1. cat data* | sort -n -u > updata
+
+2.mkdir ../backup
+	mkdir ../backup/back_cpp ../backup/back_py
+
+3. mv `find .. | grep "\.cpp"`  ../backup/back_cpp
+mv `find .. | grep "\.py"`  ../backup/back_py
+
+4. cat `find | grep "\.cpp"` | grep "cout" > coutlist
+
+5. rm `find ~ | grep "check.sh"`
+
