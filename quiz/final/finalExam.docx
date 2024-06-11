@@ -10,3 +10,11 @@ mv `find .. | grep "\.py"`  ../backup/back_py
 
 5. rm `find ~ | grep "check.sh"`
 
+6. awk 'BEGIN {sum = 0}{if ($2 >= 90 && $3 >=95 ) sum ++}END{print sum}' data
+
+8. awk '{if (NR % 2 == 0) printf ("**%s\n", $0); else printf ("++%s\n", $0)}' prob8_10
+
+9. sed 's/[0-9]/X/g' prob8_10
+
+10 sed 's/ /:/g' prob8_10
+
