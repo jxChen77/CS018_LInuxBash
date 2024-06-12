@@ -1,0 +1,14 @@
+total 76
+-rw-rw-r-- 1 jiaxi jiaxi    59 Jun 11 15:46 data
+-rw-rw-r-- 1 jiaxi jiaxi   154 Jun 11 15:55 email
+drwxrwxr-x 5 jiaxi jiaxi  4096 Jun 11 15:24 final
+-rw-rw-r-- 1 jiaxi jiaxi  3148 Jun 11 17:22 finalExam.docx
+-rw-rw-r-- 1 jiaxi jiaxi    74 Jun 11 16:30 grade.txt
+-rw-rw-r-- 1 jiaxi jiaxi     0 Jun 11 17:23 m
+-rwxrw-r-- 1 jiaxi jiaxi   294 Jun 11 16:33 p13.awk
+-rwxrw-r-- 1 jiaxi jiaxi   229 Jun 11 17:23 p14.awk
+-rwxrwxr-x 1 jiaxi jiaxi 16256 Jun 11 16:58 p15
+-rw-rw-r-- 1 jiaxi jiaxi   417 Jun 11 16:58 p15.c
+-rwxrwxr-x 1 jiaxi jiaxi 16424 Jun 11 17:13 p16
+-rw-rw-r-- 1 jiaxi jiaxi   836 Jun 11 17:13 p16.c
+-rw-rw-r-- 1 jiaxi jiaxi   164 Jun 11 16:00 prob8_10

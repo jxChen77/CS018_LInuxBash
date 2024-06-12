@@ -1,20 +1,125 @@
-1. cat data* | sort -n -u > updata
+01. cat data* | sort -n -u > updata
 
-2.mkdir ../backup
+02.mkdir ../backup
 	mkdir ../backup/back_cpp ../backup/back_py
 
-3. mv `find .. | grep "\.cpp"`  ../backup/back_cpp
+03. mv `find .. | grep "\.cpp"`  ../backup/back_cpp
 mv `find .. | grep "\.py"`  ../backup/back_py
 
-4. cat `find | grep "\.cpp"` | grep "cout" > coutlist
+04. cat `find | grep "\.cpp"` | grep "cout" > coutlist
 
-5. rm `find ~ | grep "check.sh"`
+05. rm `find ~ | grep "check.sh"`
 
-6. awk 'BEGIN {sum = 0}{if ($2 >= 90 && $3 >=95 ) sum ++}END{print sum}' data
+06. awk 'BEGIN {sum = 0}{if ($2 >= 90 && $3 >=95 ) sum ++}END{print sum}' data
 
-8. awk '{if (NR % 2 == 0) printf ("**%s\n", $0); else printf ("++%s\n", $0)}' prob8_10
+7. grep -E "^[A-Za-z]+[A-Za-z0-9\.]*@[A-Za-z0-9]*\.[A-Za-z0-9]*$" email
 
-9. sed 's/[0-9]/X/g' prob8_10
+08. awk '{if (NR % 2 == 0) printf ("**%s\n", $0); else printf ("++%s\n", $0)}' prob8_10
 
-10 sed 's/ /:/g' prob8_10
+09. sed 's/[0-9]/X/g' prob8_10
+
+10. sed 's/ /:/g' prob8_10
+
+13.
+#!/bin/awk -f
+BEGIN {
+        printf "     Name   C  C++ Java|| Max\n"
+        printf "==============================\n"
+}
+{
+        max = 0;
+        printf "%10s", $1
+        for(i=2; i < 5; i++) {
+                printf "%4d", $i
+                if ($i >= max)
+                        max = $i;
+        }
+        printf " ||%4d\n", max
+}END{
+        printf "==============================\n"
+}
+
+14. 
+
+15.
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+
+int main() {
+        int fd[2];
+        char buf[1024];
+
+        if (pipe(fd) < 0) {
+                exit(EXIT_FAILURE);
+        }
+
+        if (fork() == 0) {
+                char* mes="Hello world";
+                write(fd[1], mes, strlen(mes));
+        }else{
+                wait(NULL);
+                read(fd[0], buf, 1024);
+                printf("%s\n",buf);
+        }
+        return 0;
+}
+
+16.
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+
+int main() {
+        int fd[2];
+
+        if (pipe(fd) < 0) {
+                exit(EXIT_FAILURE);
+        }
+
+        if (fork() == 0) {
+                int ch[2];
+                if (pipe(ch) < 0) {
+                        exit(EXIT_FAILURE);
+                }
+                if(fork() == 0) {
+                        char mes[1024] = {0};
+                        printf("Please enter a message: ");
+                        fgets(mes, 1024, stdin);
+                        write(ch[1], mes, strlen(mes));
+                }
+                else {
+                        char bufCh[1024] = {0};
+                        while(1) {
+                                if(read(ch[0], bufCh, 1024) > 0){
+                                        write(fd[1], bufCh, strlen(bufCh));
+                                        close(ch[0]);
+                                        close(ch[1]);
+                                        wait(NULL);
+                                        exit(0);
+                                }
+                        }
+
+                }
+        }else{
+                char buf[1024];
+                while(1){
+                        if(read(fd[0], buf, 1024) > 0) {
+                                printf("%s",buf);
+                                close(fd[0]);
+                                close(fd[1]);
+                                wait(NULL);
+                                exit(0);
+                        }
+                }
+
+        }
+        return 0;
+}
 

@@ -1,0 +1,5 @@
+Sunny	80	90	85
+April	77	92	94
+Oliver	89	95	90
+Paul	68	77	77
+Ruth	87	88	88
